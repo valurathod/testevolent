@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.form-bg{
+    background-color:#d9dde2;
+    margin-top: 20px;
+}
+body{
+    background-color:#f4f5f7;  
+}
+
+.bg-light{
+    background-color:#d9dde2;
+}
+
+a{
+    cursor: pointer;
+}
+

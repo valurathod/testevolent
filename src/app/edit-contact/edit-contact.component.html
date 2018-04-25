@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 col-xs-12 offset-md-3 form-bg">
+        <h3 class="text-center">Contact Form</h3>
+        <div class="alert alert-success" *ngIf="message">
+          {{message}}
+        </div> 
+        <form #contactForm="ngForm" novalidate (ngSubmit)="onFormSubmit(contactForm, contactForm, id)">
+            <div class="form-group">
+              <label for="firstname">First Name</label>
+              <input type="text" class="form-control" id="firstname" name="firstname" [ngModel] ="contact.firstname" #firstname = "ngModel" maxlength="30" placeholder="Enter Fist Name" required>
+              <div *ngIf="firstname.invalid && ( firstname.touched)" class="alert alert-danger" role="alert">
+                  Please enter first name!
+              </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" [ngModel] ="contact.lastname" #lastname = "ngModel" maxlength="30" placeholder="Enter Last Name" required>
+                <div *ngIf="lastname.invalid && ( lastname.touched)" class="alert alert-danger" role="alert">
+                    Please enter last name!
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emailaddress">Email address</label>
+                <input type="email" class="form-control" id="emailaddress" email name="emailaddress" [ngModel] ="contact.emailaddress" #emailaddress="ngModel" placeholder="Enter email" required>
+                <div *ngIf="emailaddress.invalid && (emailaddress.touched)" class="alert alert-danger" role="alert">
+                    <span *ngIf="emailaddress.invalid && !emailaddress.pristine">Please enter valid email id!</span>
+                    <span *ngIf="emailaddress.pristine">Please enter email id!</span>
+                </div>
+              </div>
+            <div class="form-group">
+                  <label for="phonenumber">Phone Number</label>
+                  <input type="text" class="form-control" id="phonenumber" name="phonenumber" [ngModel] ="contact.phonenumber" #phonenumber = "ngModel" pattern="\d*" minlength="10" maxlength="10" placeholder="Enter Phone Number" required>
+                  <div *ngIf="phonenumber.invalid && ( phonenumber.touched)" class="alert alert-danger" role="alert">
+                    <span *ngIf="phonenumber.invalid && !phonenumber.pristine"> Please enter valid phone number!</span>
+                    <span *ngIf="phonenumber.pristine"> Please enter phone number!</span>
+                  </div>
+            </div>
+            <div class="form-group">
+                <label for="status">Select Status</label>
+                <select class="form-control" id="status" name="status" [ngModel] ="contact.status" #status = "ngModel" required>
+                  <option [ngValue]="contact.status">{{contact.status}}</option>
+                  <option [value]="contact.status=='active'? 'inactive' : 'active'">{{contact.status=='active'? 'inactive' : 'active'}}</option>
+                </select>
+              </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!contactForm.form.valid">Submit</button>
+          </form>
+      </div> 
+    </div>
+  </div>

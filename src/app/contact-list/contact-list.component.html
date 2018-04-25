@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-10 col-sm-12 col-xs-12 col-lg-8 offset-lg-2 offset-md-1 form-bg">
+        <h3 class="text-center">Contact list</h3>
+        <table class="table table-hover table-responsive" *ngIf="contactList">
+            <thead>
+              <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Edit/Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of contactList; index as i">
+                <td>{{data.firstname}}</td>
+                <td>{{data.lastname}}</td>
+                <td>{{data.emailaddress}}</td>
+                <td>{{data.phonenumber}}</td>
+                <td>{{data.status}}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary btn-sm" [routerLink]="['/edit-contact', i]">edit</button>&nbsp;<button type="button" class="btn btn-danger btn-sm" (click)="delete(i)">delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+</div>
